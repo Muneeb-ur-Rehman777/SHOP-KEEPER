@@ -1,0 +1,145 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Dashboard Layout */
+.dashboard {
+  display: flex;
+  height: 100vh;
+  background: #f4f6f9;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: #111827;
+  color: #fff;
+  padding: 20px;
+}
+
+.logo {
+  margin-bottom: 30px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menuItem, .activeMenu {
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menuItem:hover {
+  background: #1f2937;
+}
+
+.activeMenu {
+  background: #1f2937;
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.searchInput {
+  padding: 10px;
+  width: 260px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
+.add{
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #111827;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.add:hover{
+    transform: translateY(-5px);
+    transition: 0.3s;
+
+}
+.cardsOfCustomer{
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: flex-end;
+}
+.total,.customersWithPendingPayment,.vip{
+  padding: 20px;
+  height: 100px;
+  width: 300px;
+  border-radius: 20px;
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: 0.3s;
+  cursor: pointer;
+}
+.total:hover{
+  transform: translateY(-5px);
+
+}
+.customersWithPendingPayment:hover{
+
+  transform: translateY(-5px);
+}
+.vip:hover{
+  transform: translateY(-5px);
+
+}
+.total h3,.customersWithPendingPayment h3,.vip h3{
+  color: #555;
+  font-weight: 500;
+
+}

@@ -1,0 +1,51 @@
+.addCustomerSection {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.addCustomerSection h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.addCustomerForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.addCustomerForm input {
+  flex: 1 1 200px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.submitBtn {
+  padding: 10px 16px;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.submitBtn:hover {
+  background: #15803d;
+}
+.radio{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pOfRadio{
+  width: 130px;
+}
