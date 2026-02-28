@@ -1,14 +1,17 @@
-import { use, useState ,useEffect} from 'react'
+import { use, useState, useEffect } from 'react'
 import './Add.css'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 
 const Add = () => {
     const [products1, setProducts1] = useState([])
+    const [count, setCount] = useState(1)
     const navigate = useNavigate();
+
+
 
     useEffect(() => {
         async function getData() {
-            let response = await fetch('http://localhost:3000/productsData', {
+            let response = await fetch('http://localhost:3000/availableProductsData', {
                 method: "GET"
             })
             let data = await response.json()
@@ -19,20 +22,22 @@ const Add = () => {
     }, [])
 
 
+
+
     const [data, setData] = useState({
         name: "",
         email: "",
         number: '',
         date: "",
-        order: "",
+        order: [],
         price: "",
         status: ""
     })
 
+
+
     async function Added(e) {
-        e.preventDefault();
-
-
+        // e.preventDefault();
 
         let response = await fetch("http://localhost:3000/add", {
             method: "POST",
@@ -49,6 +54,8 @@ const Add = () => {
     }
 
 
+
+
     function handleChange(e) {
         const { name, value } = e.target;
         setData((prev) => ({
@@ -58,11 +65,38 @@ const Add = () => {
         }));
     }
 
+    // order: [{ quantitty: 3, name: "OIL" }, {}]
 
+
+    function handleChangeOfProduct(e) {
+        console.log("Hello world")
+        const { name, value } = e.target
+``
+        setData((prev) => {
+            const f = prev.order.find((item) => { return item.name == value })
+            if (f) {
+                return {
+                    ...prev,
+                    [name]:prev.order.map((item) => (item.name == value ? { ...item, quantity: item.quantity + 1 } : item))
+                }
+
+
+            }
+
+            return {
+                ...prev,
+                order: [...prev.order, { name: value, quantity: 1 }]
+            };
+
+        })
+
+    }
+    
     return (
         <>
             <div className="addCustomerSection">
                 <h3>Add New Customer</h3>
+                {/* <div>{data.order.map}</div> */}
                 <form onSubmit={Added} className="addCustomerForm">
                     <input type="text" placeholder="Customer Name" name='name' required onChange={handleChange} />
                     <input type="email" placeholder="Email Address" name='email' onChange={handleChange} />
@@ -70,10 +104,12 @@ const Add = () => {
                     <input type="date" placeholder="Join Date" name='date' required onChange={handleChange} />
                     <input type='number' placeholder="price" name='price' required onChange={handleChange} />
 
-                    <select name="" id="" className='drop'>
-                        {products1.map((item,idx)=>{
-                            return(<option name='order' required onChange={handleChange}>{item.name}</option>)
-                        })}
+                    <select name="order" onChange={handleChangeOfProduct} required>
+                        {products1.map((item, idx) => (
+                            <option key={idx} value={item.name}>
+                                {item.name}
+                            </option>
+                        ))}
                     </select>
                     <div>
                         <div className='radio'>

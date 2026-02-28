@@ -151,7 +151,7 @@ const Dashboard = () => {
                                         <td>{c.name}</td>
                                         <td>{c.email}</td>
                                         <td>{c.number}</td>
-                                        <td>{c.order}</td>
+                                        {/* <td>{c.order}</td> */}
                                     </tr>
 
                                 ))}
