@@ -69,7 +69,7 @@ const Total = () => {
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Order</th>
+                                <th>Bill</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -79,7 +79,7 @@ const Total = () => {
                                     <td>{c.id}</td>
                                     <td>{c.name}</td>
                                     <td>{c.email}</td>
-                                    <td>{c.order}</td>
+                                    <td>{c.price}</td>
                                     <td>{c.status}</td>
                                 </tr>
                             ))}

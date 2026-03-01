@@ -90,7 +90,7 @@ const Orders = () => {
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Order</th>
+                                    <th>Bill</th>
                                     <th>Date</th>
                                     <th>Status</th>
                                 </tr>
@@ -100,7 +100,7 @@ const Orders = () => {
                                     <tr key={c.id} >
                                         <td>{c.id}</td>
                                         <td>{c.name}</td>
-                                        <td>{c.order}</td>
+                                        <td>{c.price}</td>
                                         <td>{c.date}</td>
                                         <td>{c.status}</td>
                                     </tr>

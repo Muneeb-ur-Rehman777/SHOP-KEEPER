@@ -49,3 +49,37 @@
 .pOfRadio{
   width: 130px;
 }
+.reciptBox{
+  background-color: #f6f8ff;
+  box-shadow: 1px 10px 10px rgba(0,0,0,0.05) ;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  height: 250px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  overflow-y: auto; 
+  padding: 5px;
+  
+
+
+}
+.recipt{
+  display: flex;
+  justify-content: center;
+  
+
+}
+.ii{
+  display: flex;
+  border: 1px solid rgba(0,0,0,0.05);
+
+}
+.ii h2{
+  width: 400px;
+}
+.ii h1{
+  width: 185px;
+}

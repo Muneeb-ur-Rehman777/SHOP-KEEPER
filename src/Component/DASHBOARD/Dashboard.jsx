@@ -5,8 +5,6 @@ import { BiPlus } from 'react-icons/bi'
 
 const Dashboard = () => {
 
-    // const [customers, setCustomerr] = useState([])
-    // const [sales,setSales]=useState([])
     const [total, setTotal] = useState([])
     const [products1, setProducts1] = useState([])
     const [sales, setSales] = useState(0)
@@ -52,23 +50,16 @@ const Dashboard = () => {
 
     }, [])
 
-    const stats = [
-        { title: "Total Customers", value: "1,324" },
-        { title: "Products", value: "856" },
-        { title: "Sales Today", value: "$4,532" },
-        { title: "Orders", value: "245" },
-    ];
 
 
     const navigate = useNavigate();
 
 
     function ADD() {
-
-
         navigate("/Add")
 
     }
+
     function handleClick(idx) {
         if (idx === 1) {
             navigate("/Customer")
@@ -83,11 +74,20 @@ const Dashboard = () => {
             navigate('/Sales')
         }
     }
-    function normal() {
 
-    }
-    function show() {
 
+
+    const [particularData, setParticularData] = useState()
+
+
+    async function show(e) {
+
+        let response = await fetch(`http://localhost:3000/getParticularData/${e}`, {
+            method: "GET"
+        })
+
+        let data = await response.json()
+        setParticularData(data)
     }
 
 
@@ -146,15 +146,26 @@ const Dashboard = () => {
                             </thead>
                             <tbody>
                                 {total.map((c) => (
-                                    <tr key={c.id} onClick={show}>
+                                    <tr value={c.id} onClick={() => show(c.id)} className='trrr'>
                                         <td>{c.id}</td>
                                         <td>{c.name}</td>
                                         <td>{c.email}</td>
                                         <td>{c.number}</td>
                                         {/* <td>{c.order}</td> */}
-                                    </tr>
+                                    </tr>  
+                                     
+                                    
+                                  
+                                                                                           
 
                                 ))}
+                                {particularData && <tr>
+                                    <td>{particularData.name}</td>
+                                </tr>
+
+                                }
+
+
                             </tbody>
                         </table>
                     </div>
