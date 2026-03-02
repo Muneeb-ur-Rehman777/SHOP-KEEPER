@@ -2,6 +2,7 @@ import { use, useEffect, useState } from 'react'
 import './Dashboard.css'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { BiPlus } from 'react-icons/bi'
+import React from 'react'
 
 const Dashboard = () => {
 
@@ -77,17 +78,20 @@ const Dashboard = () => {
 
 
 
-    const [particularData, setParticularData] = useState()
+    const [particularData, setParticularData] = useState(null)
+    const [openRowId, setOpenRowId] = useState(null);
 
 
     async function show(e) {
+
 
         let response = await fetch(`http://localhost:3000/getParticularData/${e}`, {
             method: "GET"
         })
 
         let data = await response.json()
-        setParticularData(data)
+        setParticularData((prev) => (prev != null ? null : data))
+        setOpenRowId((prev) => (prev != null ? null : e))
     }
 
 
@@ -141,29 +145,48 @@ const Dashboard = () => {
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Order</th>
+                                    <th>Bill</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {total.map((c) => (
-                                    <tr value={c.id} onClick={() => show(c.id)} className='trrr'>
-                                        <td>{c.id}</td>
-                                        <td>{c.name}</td>
-                                        <td>{c.email}</td>
-                                        <td>{c.number}</td>
-                                        {/* <td>{c.order}</td> */}
-                                    </tr>  
-                                     
-                                    
-                                  
-                                                                                           
+                                    <React.Fragment key={c.id}>
+                                        <tr onClick={() => show(c.id)} className='trrr'>
+                                            <td>{c.id}</td>
+                                            <td>{c.name}</td>
+                                            <td>{c.email}</td>
+                                            <td>{c.number}</td>
+                                            <td>{c.price}</td>
+                                        </tr>
 
+                                        {openRowId == c.id && (
+                                            <tr className="detail-row">
+                                                <td colSpan="5">
+                                                    <div className="detail-box">
+                                                        <p><strong>Name:</strong> {particularData.name}</p>
+                                                        <p><strong>Email:</strong> {particularData.email}</p>
+                                                        <p><strong>Number:</strong> {particularData.number}</p>
+                                                        <p><strong>Status:</strong> {particularData.status}</p>
+                                                        {c.order && (
+                                                            <>
+                                                                <h4>Orders:</h4>
+                                                                {c.order.map((item, index) => (
+                                                                    <div key={index}>
+                                                                        {item.name} — {item.quantity} × {item.price}
+                                                                    </div>
+                                                                ))}
+
+                                                                <div style={{ marginTop: "10px", fontWeight: "bold" }}>
+                                                                    Total: {c.price}
+                                                                </div>
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </React.Fragment>
                                 ))}
-                                {particularData && <tr>
-                                    <td>{particularData.name}</td>
-                                </tr>
-
-                                }
 
 
                             </tbody>

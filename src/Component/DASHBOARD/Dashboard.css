@@ -171,6 +171,16 @@
     transition: 0.3s;
 
 }
-.trrr{
-  cursor: pointer;
+.trrr {
+    cursor: pointer;
+}
+
+.detail-row td {
+    background: #f5f5f5;
+    padding: 15px;
+}
+
+.detail-box {
+    border-left: 4px solid #4CAF50;
+    padding-left: 10px;
 }
