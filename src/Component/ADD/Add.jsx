@@ -151,9 +151,11 @@ const Add = () => {
                         <option value="">Select Product</option>
 
                         {products1.map((item, idx) => (
-                            <option key={idx} value={item.name}>
-                                {item.name}
-                            </option>
+                            
+                                <option key={idx} value={item.name}>
+                                    {item.name}
+                                </option>
+                            
                         ))}
                     </select>
                     <div>
