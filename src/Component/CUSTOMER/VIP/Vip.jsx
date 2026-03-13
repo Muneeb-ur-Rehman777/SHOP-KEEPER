@@ -38,7 +38,19 @@ const Vip = () => {
             navigate('/Sales')
         }
     }
-
+    async function date(e) {
+        const selectedDate = e.target.value
+        let response = await fetch('http://localhost:3000/vipPost', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ date: selectedDate })
+        })
+        let result = await response.json()
+        console.log(result)
+        setData(result)
+    }
 
     return (
         <>
@@ -57,7 +69,7 @@ const Vip = () => {
                 <div className="main">
                     {/* Topbar */}
                     <div className="topbar">
-                        <input className="searchInput" placeholder="Search customers..." />
+                        <input className="searchInput" placeholder="Enter a Date" type='date' onChange={date} />
                         <div className="profile">
                             <img src="https://i.pravatar.cc/40" alt="admin" className="avatar" />
                             <span>Admin</span>

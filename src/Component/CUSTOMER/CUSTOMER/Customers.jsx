@@ -74,52 +74,6 @@ const Customer = () => {
 
     }
 
-    // async function date(e) {
-    //     const date = e.target.value
-
-
-    //     let response = await fetch('http://localhost:3000/specific', {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(date)
-
-    //     })
-
-    //     let result = await response.json()
-    //     console.log(result)
-    //     setTotal(result)
-
-
-
-    //     let response1 = await fetch('http://localhost:3000/pendingPost', {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(date)
-    //     })
-    //     let data = await response1.json()
-    //     console.log(data)
-    //     setPending(data)
-
-
-
-
-
-    //     let response2 = await fetch('http://localhost:3000/vip', {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(date)
-    //     })
-    //     let data2 = await response2.json()
-    //     setVip(data2)
-    //     console.log(data2)
-
-    // }
 
 
     return (

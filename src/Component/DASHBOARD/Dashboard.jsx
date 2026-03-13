@@ -36,8 +36,8 @@ const Dashboard = () => {
                 method: "GET"
             })
             let data = await response.json()
-            setTotal(data)
             console.log(data)
+            setTotal(data)
         }
 
         getTotalData();

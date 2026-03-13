@@ -8,7 +8,7 @@ const AddProducts = () => {
 
     const [formData, setformData] = useState({ name: "", category: "", price: "", isPresent: true, quantity: "" })
 
-    
+
 
 
 
@@ -31,26 +31,29 @@ const AddProducts = () => {
     }
 
     async function handleSubmit() {
-        console.log(formData)
+        try {
+            let obj = {
+                ...formData,
+                price: Number(formData.price),
+                quantity: Number(formData.quantity)
+            };
 
-        let obj = {
-            ...formData,
-            price: Number(formData.price),
-            quantity: Number(formData.price)
+            let response = await fetch("http://localhost:3000/addProductsData", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(obj)
+            });
+
+            let data1 = await response.json();
+            console.log(data1);
+
+            navigate('/Products');
+
+        } catch (error) {
+            console.log("Error:", error);
         }
-
-        let response = await fetch("http://localhost:3000/addProductsData", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(obj)
-        });
-
-        let data1 = await response.json();
-        console.log(data1)
-        navigate('/Products')
-
     }
 
 
@@ -114,6 +117,7 @@ const AddProducts = () => {
                             className='in'
                             name="price"
                             placeholder="Price"
+                            value={formData.price}
                             onChange={handleChange}
                         />
 
@@ -124,13 +128,14 @@ const AddProducts = () => {
                             className='in'
                             name="quantity"
                             placeholder="Quantity"
+                            value={formData.quantity}
                             onChange={handleChange}
                         />
 
                         <label>
                             Present:
                             <input
-                             className='check'
+                                className='check'
                                 type="checkbox"
                                 name="isPresent"
                                 checked={formData.isPresent}
